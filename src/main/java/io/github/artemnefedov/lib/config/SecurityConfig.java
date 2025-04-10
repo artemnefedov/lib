@@ -21,24 +21,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.cors(Customizer.withDefaults()).csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(req -> req
-//                        public pages
-//                        .requestMatchers("/login", "/login.html").permitAll()
-//                        .requestMatchers(HttpMethod.POST, "/reset").permitAll()
-//                        static content
-                        .requestMatchers(HttpMethod.GET, "/css/**", "/js/**", "/fonts/**",
-                                "/images/**", "/robots.txt", "/favicon.ico"
-                        ).permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
                         .permitAll()
                         .defaultSuccessUrl("/", true)
-                )
-                .logout(
-                        logout -> logout
-                                .logoutUrl("/logout")
-                                .permitAll()
                 )
                 .build();
     }

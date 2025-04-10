@@ -2,6 +2,7 @@ package io.github.artemnefedov.lib.controller;
 
 import io.github.artemnefedov.lib.service.BookDto;
 import io.github.artemnefedov.lib.service.BookService;
+import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -33,37 +34,23 @@ public class LibController {
     ) {
         Pageable pageable = PageRequest.of(page, size);
         Page<BookDto> booksPage = bookService.findBooks(title, brand, year, pageable);
-
-        model.addAttribute("booksPage", booksPage);
-        model.addAttribute("title", title);
-        model.addAttribute("brand", brand);
-        model.addAttribute("year", year);
+        model
+                .addAttribute("booksPage", booksPage)
+                .addAttribute("title", title)
+                .addAttribute("brand", brand)
+                .addAttribute("year", year);
         return "index";
     }
 
     @GetMapping("/books/add")
     public String showAddBookForm(Model model) {
-        model.addAttribute("book", new BookDto(
-                null,
-                null,
-                null,
-                0,
-                null,
-                0,
-                0.0
-        ));
+        model.addAttribute("book", new BookDto(null, null, null, 0, null, 0, 0.0));
         return "add";
     }
 
-//    @PostMapping("/books")
-//    public String saveBook(@ModelAttribute("book") BookDto dto) {
-//        bookService.addBook(dto);
-//        return "redirect:/";
-//    }
-
     @GetMapping("/books/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        BookDto book = bookService.findById(id); // выбрасывает исключение, если не найдено
+        BookDto book = bookService.findById(id);
         model.addAttribute("book", book);
         return "edit";
     }

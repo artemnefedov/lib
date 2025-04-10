@@ -11,7 +11,6 @@
 <div class="container mt-4">
 	<h1 class="mb-4">Список книг</h1>
 
-	<!-- 🔍 Фильтрация -->
 	<form method="get" class="row g-3 mb-3">
 		<div class="col-md-3">
 			<input type="text" class="form-control" name="title" placeholder="Название"
@@ -33,12 +32,10 @@
 		</div>
 	</form>
 
-	<!-- ➕ Кнопка добавления -->
 	<div class="mb-3">
 		<a th:href="@{/books/add}" class="btn btn-success">Добавить книгу</a>
 	</div>
 
-	<!-- 📋 Таблица -->
 	<div class="table-responsive">
 		<table class="table table-bordered table-striped align-middle">
 			<thead class="table-dark">
@@ -77,7 +74,6 @@
 		</table>
 	</div>
 
-	<!-- 📃 Пагинация -->
 	<nav th:if="${booksPage.totalPages > 1}">
 		<ul class="pagination justify-content-center">
 			<li class="page-item" th:classappend="${booksPage.first} ? 'disabled'">
