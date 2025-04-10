@@ -44,7 +44,7 @@ public class LibController {
     @GetMapping("/books/add")
     public String showAddBookForm(Model model) {
         model.addAttribute("book", new BookDto(
-                0,
+                null,
                 null,
                 null,
                 0,
@@ -54,6 +54,12 @@ public class LibController {
         ));
         return "add";
     }
+
+//    @PostMapping("/books")
+//    public String saveBook(@ModelAttribute("book") BookDto dto) {
+//        bookService.addBook(dto);
+//        return "redirect:/";
+//    }
 
     @GetMapping("/books/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
@@ -74,6 +80,11 @@ public class LibController {
         return "redirect:/";
     }
 
+    @PostMapping("/books/delete/{id}")
+    public String deleteBook(@PathVariable Long id) {
+        bookService.deleteBook(id);
+        return "redirect:/";
+    }
 
     @GetMapping("/login")
     public String login() {

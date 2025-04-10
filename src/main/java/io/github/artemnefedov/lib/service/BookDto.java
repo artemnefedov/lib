@@ -4,7 +4,7 @@ import io.github.artemnefedov.lib.repository.Book;
 import java.math.BigDecimal;
 
 public record BookDto(
-        long id,
+        Long id,
         String vendorCode,
         String title,
         int year,
