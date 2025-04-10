@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: lib
+  main:
+    banner-mode: "off"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lib
+    username: backend_app
+    password: dGVzdCByc3RlY2ggZGIgcGFzc3dvcmQNCg==
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update

@@ -1,0 +1,10 @@
+services:
+  lib_db:
+    image: postgres:17.4-alpine3.21
+    container_name: lib_db
+    environment:
+      POSTGRES_USER: backend_app
+      POSTGRES_PASSWORD: dGVzdCByc3RlY2ggZGIgcGFzc3dvcmQNCg==
+      POSTGRES_DB: lib
+    ports:
+      - '5432:5432'
